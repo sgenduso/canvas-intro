@@ -4,31 +4,48 @@ var shapeChoice = document.getElementById('shape-choice');
 var shapeWidth = document.getElementById('shape-width');
 var shapeColor = document.getElementById('color-choice');
 
-//draw square
-//fillRect(x, y, width, height)
-function drawSquare(x,y,w, color) {
-  ctx.fillStyle = color;
-  ctx.fillRect(x-w/2, y-w/2, w, w);
+function Shape(x,y,w,color) {
+  this.x = x;
+  this.y = y;
+  this.w = w;
+  this.color = color;
 }
 
-//draw circle
-//arc(x, y, radius, startAngle, endAngle, anticlockwise);
-function drawCircle(x, y, w, color) {
-  ctx.beginPath();
-  ctx.fillStyle = color;
-  ctx.arc(x, y, w/2, 0, Math.PI*2, false);
-  ctx.fill();
+function Square(x, y, w, color) {
+  Shape.call(this, x, y, w, color);
 }
+
+Square.prototype = new Shape();
+
+Square.prototype.draw = function () {
+  ctx.fillStyle = this.color;
+  ctx.fillRect(this.x-this.w/2, this.y-this.w/2, this.w, this.w);
+};
+
+function Circle(x, y, w, color) {
+  Shape.call(this, x, y, w, color);
+}
+
+Circle.prototype = new Shape();
+
+Circle.prototype.draw = function () {
+  ctx.beginPath();
+  ctx.fillStyle = this.color;
+  ctx.arc(this.x, this.y, this.w/2, 0, Math.PI*2, false);
+  ctx.fill();
+};
 
 function onClick(event) {
   var x = event.clientX - canvas.offsetLeft;
   var y = event.clientY - canvas.offsetTop;
   var w = shapeWidth.value;
   var color = shapeColor.value;
-    if (shapeChoice.value === 'square') {
-    drawSquare(x,y,w, color);
+  if (shapeChoice.value === 'square') {
+    var square = new Square(x,y,w, color);
+    square.draw();
   } else {
-    drawCircle(x,y,w, color);
+    var circle = new Circle(x,y,w, color);
+    circle.draw();
   }
 }
 

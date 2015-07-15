@@ -5,6 +5,8 @@ var shapeWidth = document.getElementById('shape-width');
 var shapeColor = document.getElementById('color-choice');
 var eraseSquares = document.getElementById('eraseSquares');
 var eraseCircles = document.getElementById('eraseCircles');
+var recolorSquares = document.getElementById('recolorSquares');
+var recolorCircles = document.getElementById('recolorCircles');
 var eraseAll = document.getElementById('eraseAll');
 var randomFill = document.getElementById('randomFill');
 var squareArray = [];
@@ -28,8 +30,8 @@ Square.prototype.draw = function () {
   ctx.fillRect(this.x-this.w/2, this.y-this.w/2, this.w, this.w);
 };
 
-Square.prototype.erase = function () {
-  ctx.fillStyle = 'white';
+Square.prototype.recolor = function (color) {
+  ctx.fillStyle = color;
   ctx.fillRect(this.x-this.w/2, this.y-this.w/2, this.w, this.w);
 };
 
@@ -46,9 +48,9 @@ Circle.prototype.draw = function () {
   ctx.fill();
 };
 
-Circle.prototype.erase = function () {
+Circle.prototype.recolor = function (color) {
   ctx.beginPath();
-  ctx.fillStyle = 'white';
+  ctx.fillStyle = color;
   ctx.arc(this.x, this.y, this.w/2, 0, Math.PI*2, false);
   ctx.fill();
 };
@@ -75,24 +77,33 @@ function onClick(event) {
 
 canvas.addEventListener('click', onClick);
 
-function erase(shapeArray) {
+function recolor(shapeArray, color) {
   shapeArray.forEach(function (shape) {
-    shape.erase();
+    shape.recolor(color);
   });
 }
 
 eraseSquares.addEventListener('click', function () {
-  erase(squareArray);
+  recolor(squareArray, 'white');
 });
 
 eraseCircles.addEventListener('click', function () {
-  erase(circleArray);
+  recolor(circleArray, 'white');
 });
 
 eraseAll.addEventListener('click', function () {
-  erase(squareArray);
-  erase(circleArray);
+  recolor(squareArray, 'white');
+  recolor(circleArray, 'white');
 });
+
+recolorSquares.addEventListener('click', function () {
+  recolor(squareArray, shapeColor.value);
+});
+
+recolorCircles.addEventListener('click', function () {
+  recolor(circleArray, shapeColor.value);
+});
+
 
 randomFill.addEventListener('click', function () {
   for (var i = 0; i < 100; i++) {

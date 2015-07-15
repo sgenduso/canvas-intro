@@ -10,3 +10,10 @@ a {
 #myCanvas {
   border: 5px solid black;
 }
+
+.form {
+  display: inline-block;
+  vertical-align: top;
+  padding: 30px;
+  padding-top: 0;
+}

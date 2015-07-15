@@ -4,8 +4,15 @@ block content
   h1= title
   canvas#myCanvas(height='500', width='500')
   div.form
-    label(for='shape-choice') Choose shape to draw:&nbsp;&nbsp;
-    select(id='shape-choice' name='shape_choice')
-      //- option(selected disabled value = null) Choose
-      option(id='square' name='square' value='square') Square
-      option(id='circle' name='circle' value='circle') Circle
+    div
+      label(for='shape-choice') Choose shape to draw:&nbsp;&nbsp;
+      select(id='shape-choice' name='shape_choice')
+        //- option(selected disabled value = null) Choose
+        option(id='square' name='square' value='square') Square
+        option(id='circle' name='circle' value='circle') Circle
+    div
+      label(for='color-choice') Choose color of shape:&nbsp;&nbsp;
+      input(type='color' id='color-choice' name='color_choice' value='#ffffff')
+    div
+      label(for='shape-width') Choose width of shape:&nbsp;&nbsp;
+      input(type='number' id='shape-width' name='shape_width' min='1')

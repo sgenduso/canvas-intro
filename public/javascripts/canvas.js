@@ -5,6 +5,8 @@ var shapeWidth = document.getElementById('shape-width');
 var shapeColor = document.getElementById('color-choice');
 var eraseSquares = document.getElementById('eraseSquares');
 var eraseCircles = document.getElementById('eraseCircles');
+var eraseAll = document.getElementById('eraseAll');
+var randomFill = document.getElementById('randomFill');
 var squareArray = [];
 var circleArray = [];
 
@@ -51,11 +53,7 @@ Circle.prototype.erase = function () {
   ctx.fill();
 };
 
-function onClick(event) {
-  var x = event.clientX - canvas.offsetLeft;
-  var y = event.clientY - canvas.offsetTop;
-  var w = shapeWidth.value || 100;
-  var color = shapeColor.value;
+function drawShape(x, y, w, color) {
   if (shapeChoice.value === 'square') {
     var square = new Square(x,y,w, color);
     square.draw();
@@ -67,18 +65,48 @@ function onClick(event) {
   }
 }
 
+function onClick(event) {
+  var x = event.clientX - canvas.offsetLeft;
+  var y = event.clientY - canvas.offsetTop;
+  var w = shapeWidth.value || 100;
+  var color = shapeColor.value;
+  drawShape(x, y, w, color);
+}
+
 canvas.addEventListener('click', onClick);
 
-eraseSquares.addEventListener('click', function () {
-  squareArray.forEach(function (square) {
-    square.erase();
+function erase(shapeArray) {
+  shapeArray.forEach(function (shape) {
+    shape.erase();
   });
+}
+
+eraseSquares.addEventListener('click', function () {
+  erase(squareArray);
 });
 
 eraseCircles.addEventListener('click', function () {
-  circleArray.forEach(function (circle) {
-    circle.erase();
-  });
+  erase(circleArray);
+});
+
+eraseAll.addEventListener('click', function () {
+  erase(squareArray);
+  erase(circleArray);
+});
+
+randomFill.addEventListener('click', function () {
+  for (var i = 0; i < 100; i++) {
+    var color = Math.floor(Math.random()*16777215).toString(16);
+    var width = Math.floor(Math.random()*(canvas.width));
+    var x = Math.floor(Math.random()*(canvas.width));
+    var y = Math.floor(Math.random()*(canvas.height));
+    if (i%2 === 0) {
+      shapeChoice.value = 'square';
+    } else {
+      shapeChoice.value = 'circle';
+    }
+    drawShape(x, y, w, color);
+  }
 });
 
 //draw triangle

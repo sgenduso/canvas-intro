@@ -35,3 +35,11 @@ input {
 input[type='number'], input[type='color'] {
   width: 48px;
 }
+
+select, button{
+  border: solid black 1px;;
+}
+
+button {
+  margin-left: 170px;
+}

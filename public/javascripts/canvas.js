@@ -1,6 +1,14 @@
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 
+var onClick = function (event) {
+  var x = event.clientX - canvas.offsetLeft;
+  var y = event.clientY - canvas.offsetTop;
+  alert('you clicked at ' + x + ', ' + y);
+};
+
+canvas.addEventListener('click', onClick);
+
 //draw square
 //fillRext(x, y, width, height)
 ctx.fillStyle = 'blue';

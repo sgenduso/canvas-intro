@@ -96,8 +96,8 @@ eraseAll.addEventListener('click', function () {
 
 randomFill.addEventListener('click', function () {
   for (var i = 0; i < 100; i++) {
-    var color = Math.floor(Math.random()*16777215).toString(16);
-    var width = Math.floor(Math.random()*(canvas.width));
+    var color = '#' + Math.floor(Math.random()*16777215).toString(16);
+    var w = Math.floor(Math.random()*(canvas.width/2));
     var x = Math.floor(Math.random()*(canvas.width));
     var y = Math.floor(Math.random()*(canvas.height));
     if (i%2 === 0) {

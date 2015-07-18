@@ -116,18 +116,6 @@ function recolor(shapeArray, color) {
   });
 }
 
-eraseSquares.addEventListener('click', function () {
-  recolor(squareArray, 'white');
-});
-
-eraseCircles.addEventListener('click', function () {
-  recolor(circleArray, 'white');
-});
-
-eraseAll.addEventListener('click', function () {
-  canvas.width = canvas.width;
-  canvas.height = canvas.height;
-});
 
 recolorSquares.addEventListener('click', function () {
   recolor(squareArray, shapeColor.value);
@@ -173,4 +161,20 @@ randomMove.addEventListener('click', function () {
 
 stopMove.addEventListener('click', function () {
   clearInterval(intervalSet);
+});
+
+eraseSquares.addEventListener('click', function () {
+  clearInterval(intervalSet);
+  recolor(squareArray, 'white');
+});
+
+eraseCircles.addEventListener('click', function () {
+  clearInterval(intervalSet);
+  recolor(circleArray, 'white');
+});
+
+eraseAll.addEventListener('click', function () {
+  clearInterval(intervalSet);
+  canvas.width = canvas.width;
+  canvas.height = canvas.height;
 });

@@ -1,11 +1,14 @@
 body {
   padding: 30px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px "Architects Daughter", Helvetica, Arial, sans-serif;
+  background-image: url('../images/color-smoke.jpg');
+  /*background-size: cover;*/
 }
 
 h1 {
   font-weight: bold;
   font-size: 3em;
+  color: #1A4BF1;
 }
 
 a {
@@ -13,7 +16,10 @@ a {
 }
 
 #myCanvas {
-  border: 5px solid black;
+  border: 5px solid #1A4BF1;
+  border-radius: 10px;
+  background-color: white;
+  /*box-shadow: -9px 13px 5px -2px rgba(81,197,189,0.36);*/
 }
 
 .form {
@@ -25,26 +31,49 @@ a {
 
 div {
   margin-bottom: 15px;
+  color: #1A4BF1;
+  font-size: 1.01em;
 }
 
 label {
   display: inline-block;
   width: 170px;
-}
-
-input {
-  /*display: inline-block;*/
-  /*margin-left: 170px;*/
+  vertical-align: middle;
 }
 
 input[type='number'], input[type='color'] {
   width: 48px;
 }
 
-select, button{
-  border: solid black 1px;;
+select, button, input{
+  border: solid 2px #1A4BF1;
+  color: #1A4BF1;
+  font-family: "Architects Daughter";
+  font-size: 1em;
+  border-radius: 3px;
+  height: 30px;
+}
+
+
+button, input[type='color'] {
+  /*background-color: rgba(164, 221, 220, .5);*/
+  background-color: white;
 }
 
 button {
-  margin-left: 170px;
+  border: solid 2px #1A4BF1;
+  color: #1A4BF1;
+}
+
+button:hover {
+  color: white;
+  background-color: #1A4BF1;
+}
+
+#randomMove {
+  margin-right: 5px;
+}
+
+#eraseSquares {
+  margin-top: 15px;
 }

@@ -2,7 +2,7 @@ extends layout
 
 block content
   h1= title
-  canvas#myCanvas(height='500', width='500')
+  canvas#myCanvas(height='500', width='500', background-color=white)
   div.form
     div
       label(for='shape-choice') Choose shape to draw:&nbsp;&nbsp;
@@ -12,10 +12,10 @@ block content
         option(id='circle' name='circle' value='circle') Circle
     div
       label(for='color-choice') Choose color of shape:&nbsp;&nbsp;
-      input(type='color' id='color-choice' name='color_choice' value='#ffffff')
+      input(type='color' id='color-choice' name='color_choice' value='#1A4BF1')
     div
       label(for='shape-width') Choose width of shape:&nbsp;&nbsp;
-      input(type='number' id='shape-width' name='shape_width' min='1')
+      input(type='number' id='shape-width' name='shape_width' min='1' max='250')
     div
       button#eraseSquares Erase Squares
     div
@@ -30,3 +30,5 @@ block content
       button#randomFill Fill Canvas Randomly
     div
       button#randomMove Surprise!
+      button#stopMove Make It Stop!
+      

@@ -11,10 +11,12 @@ var recolorCircles = document.getElementById('recolorCircles');
 var eraseAll = document.getElementById('eraseAll');
 var randomFill = document.getElementById('randomFill');
 var randomMove = document.getElementById('randomMove');
+var stopMove = document.getElementById('stopMove');
 var raf = window.requestAnimationFrame;
 var squareArray = [];
 var circleArray = [];
 var shapesArray = [];
+
 
 function Shape(x,y,w,color) {
   this.x = x;
@@ -153,14 +155,22 @@ randomFill.addEventListener('click', function () {
 
 
 //MOVE SHAPES
-randomMove.addEventListener('click', function () {
-    function move() {
-      canvas.width = canvas.width;
-      canvas.height = canvas.height;
 
-    shapesArray.forEach(function (shape) {
-      shape.update();
-    });
+function move() {
+  canvas.width = canvas.width;
+  canvas.height = canvas.height;
+
+shapesArray.forEach(function (shape) {
+  shape.update();
+});
 }
-    setInterval(move, 10);
+
+var intervalSet;
+
+randomMove.addEventListener('click', function () {
+    intervalSet = setInterval(move, 10);
+});
+
+stopMove.addEventListener('click', function () {
+  clearInterval(intervalSet);
 });

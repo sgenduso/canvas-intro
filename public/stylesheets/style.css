@@ -2,7 +2,6 @@ body {
   padding: 30px;
   font: 14px "Architects Daughter", Helvetica, Arial, sans-serif;
   background-image: url('../images/color-smoke.jpg');
-  /*background-size: cover;*/
 }
 
 h1 {
@@ -19,7 +18,6 @@ a {
   border: 5px solid #1A4BF1;
   border-radius: 10px;
   background-color: white;
-  /*box-shadow: -9px 13px 5px -2px rgba(81,197,189,0.36);*/
 }
 
 .form {
@@ -56,7 +54,6 @@ select, button, input{
 
 
 button, input[type='color'] {
-  /*background-color: rgba(164, 221, 220, .5);*/
   background-color: white;
 }
 
